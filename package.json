@@ -1,0 +1,49 @@
+{
+  "name": "gitlab-exporter-ts",
+  "version": "1.0.0",
+  "description": "",
+  "main": "dist/src/index.js",
+  "scripts": {
+    "start": "node dist/src",
+    "build": "tsc",
+    "clean": "rm -rf dist",
+    "watch": "npm run build -- -w",
+    "docs": "typedoc --out docs",
+    "lint": "eslint \"**/*.ts\"",
+    "lint-fix": "eslint --fix \"**/*.ts\"",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "MIT",
+  "dependencies": {
+    "gitlab": "^12.1.0",
+    "log4js": "^6.1.0",
+    "prom-client": "^11.5.3"
+  },
+  "devDependencies": {
+    "@typescript-eslint/eslint-plugin": "^2.10.0",
+    "@typescript-eslint/parser": "^2.10.0",
+    "eslint": "^6.7.2",
+    "eslint-config-prettier": "^6.7.0",
+    "eslint-plugin-prettier": "^3.1.1",
+    "husky": "^3.1.0",
+    "lint-staged": "^9.5.0",
+    "organize-imports-cli": "^0.7.0",
+    "prettier": "^1.19.1",
+    "typedoc": "^0.15.3",
+    "typescript": "^3.7.3"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
+  },
+  "lint-staged": {
+    "*.ts": [
+      "organize-imports-cli",
+      "prettier --write",
+      "eslint",
+      "git add"
+    ]
+  }
+}
